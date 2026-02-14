@@ -1,50 +1,33 @@
-
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html>
 <head>
     <meta charset="UTF-8">
     <title>Valentine Surprise For Aramide</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-<audio id="bgMusic" loop>
+<body><audio id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
-</audio>
-
-<div id="hearts"></div>
-
-<div id="page1" class="container">
+</audio><div id="hearts"></div><div id="page1" class="container">
   <h2>Aramide, will you be my Valentine?</h2>
   <div class="envelope" id="mainEnvelope">
     <div class="flap"></div>
   </div>
   <button class="button yes" onclick="openYes()">Yes</button>
-  <button class="button no" id="noBtn" onmouseover="moveNo()">No</button>
-</div>
-
-<div id="page2" class="container hidden">
+  <button class="button no" id="noBtn" onmouseover="moveNo()" onclick="noReply()">No</button>
+</div><div id="page2" class="container hidden">
 <h2>My Sweet Aramide</h2>
   <p>From the very first moment I met you, something in my heart whispered that you were special. Every time I see your smile, I feel a warmth that makes the world fade away. Your laughter is the music I want to hear every day, your eyes are the stars I want to follow forever, and your presence turns ordinary moments into memories I will treasure for a lifetime.</p>
   <p>Every day I spend with you feels like a gift. Your kindness, your grace, and the way you make even the smallest things so beautiful inspire me to be a better person. I love the way you listen, the way you care, and the way you make everyone around you feel valued. But most of all, I love the way you make my heart feel safe, loved, and alive.</p>
   <p>Aramide, I want to create endless memories with you, walking hand in hand under the stars, laughing at silly jokes only we understand, sharing dreams and quiet moments alike. I want to celebrate all your victories and comfort you in every challenge, and I want you to know that in every season, in every situation, my heart is yours.</p>
-  <p>I am writing this not only to tell you how much I love you, but also to promise that I will cherish you, honor you, and stand by you through all of life’s moments. You are my happiness, my peace, my everything, and I choose you today, tomorrow, and always.</p>
-
-  <div class="gallery">
+  <p>I am writing this not only to tell you how much I love you, but also to promise that I will cherish you, honor you, and stand by you through all of life’s moments. You are my happiness, my peace, my everything, and I choose you today, tomorrow, and always.</p>  <div class="gallery">
     <h3>Our Beautiful Memories</h3>
-    <img src="photo1.jpg" alt="our picture">
     <img src="photo2.jpg" alt="our picture">
-  </div>
-
-  <div class="invite">
+  </div>  <div class="invite">
     <h3>Date Invitation</h3>
     <p>I want to take you on a romantic evening at Creamstar.</p>
     <p>Good food. Sweet laughter. Us together.</p>
     <div class="countdown" id="countdown"></div>
   </div>
-</div>
-
-<script>
+</div><script>
 function openYes() {
   document.getElementById('mainEnvelope').classList.add('open');
   document.getElementById('bgMusic').play();
@@ -60,6 +43,10 @@ function moveNo() {
   btn.style.left = Math.random() * 300 + 'px';
 }
 
+function noReply() {
+  alert('I was hoping you\'d click yes 💔');
+}
+
 var countDownDate = new Date("Feb 14, 2026 18:00:00").getTime();
 
 setInterval(function() {
@@ -71,9 +58,7 @@ setInterval(function() {
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  document.getElementById("countdown").innerHTML =
-    days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-
+  document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
 }, 1000);
 
 // Floating hearts
@@ -84,7 +69,5 @@ for (let i = 0; i < 30; i++) {
   heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
   document.getElementById("hearts").appendChild(heart);
 }
-</script>
-
-</body>
+</script></body>
 </html>

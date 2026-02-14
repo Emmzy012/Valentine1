@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine Surprise For Aramide</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="hearts"></div>
+
+<div id="page1" class="container">
+  <h2>Aramide, will you be my Valentine?</h2>
+  <div class="envelope" id="mainEnvelope">
+    <div class="flap"></div>
+  </div>
+  <button class="button yes" onclick="openYes()">Yes</button>
+  <button class="button no" id="noBtn" onmouseover="moveNo()">No</button>
+</div>
+
+<div id="page2" class="container hidden">
+  <h2>My Sweet Aramide</h2>
+  <p>You make my heart smile every day.</p>
+  <p>Life feels softer with you in it.</p>
+  <p>I cherish every memory we share.</p>
+
+  <div class="gallery">
+    <h3>Our Beautiful Memories</h3>
+    <img src="photo1.jpg" alt="our picture">
+    <img src="photo2.jpg" alt="our picture">
+  </div>
+
+  <div class="invite">
+    <h3>Date Invitation</h3>
+    <p>I want to take you on a romantic evening at Creamstar.</p>
+    <p>Good food. Sweet laughter. Us together.</p>
+    <div class="countdown" id="countdown"></div>
+  </div>
+</div>
+
+<script>
+function openYes() {
+  document.getElementById('mainEnvelope').classList.add('open');
+  document.getElementById('bgMusic').play();
+  setTimeout(function() {
+    document.getElementById('page1').classList.add('hidden');
+    document.getElementById('page2').classList.remove('hidden');
+  }, 1000);
+}
+
+function moveNo() {
+  var btn = document.getElementById('noBtn');
+  btn.style.top = Math.random() * 300 + 'px';
+  btn.style.left = Math.random() * 300 + 'px';
+}
+
+var countDownDate = new Date("Feb 14, 2026 18:00:00").getTime();
+
+setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  document.getElementById("countdown").innerHTML =
+    days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+}, 1000);
+
+// Floating hearts
+for (let i = 0; i < 30; i++) {
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+  document.getElementById("hearts").appendChild(heart);
+}
+</script>
+
+</body>
+</html>
